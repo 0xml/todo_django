@@ -12,11 +12,11 @@ def index(request):
 
 def detail(request, project_id):
 	try:
-		question = Question.objects.get(pk=project_id)
-	except Question.DoesNotExist:
-		raise Http404("Question does not exist")
-    return render(request, 'polls/detail.html', {'question': question})
+		project = Project.objects.get(pk=project_id)
+	except Project.DoesNotExist:
+		raise Http404("Project does not exist")
+    return render(request, 'polls/detail.html', {'project': project})
 
 def tasks(request, project_id):
-    response = "You're looking at the results of question %s."
+    response = "You're looking at the results of project %s."
     return HttpResponse(response % project_id)
